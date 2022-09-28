@@ -47,7 +47,7 @@ Rscript model/interpretation.R --path model --dataset data/example-test-sequence
   
 BoostMEC also provides a wrapper for LightGBM's `create_tree_digraph()` function that simplifies the creation of tree visualizations for each tree in the BoostMEC model. In the code below, we produce a visualization for the first tree in the model. Note that trees are 0-indexed (Python convention).
 
-```
+```console
 python model/plot_trees.py --index 0
 ```
 
