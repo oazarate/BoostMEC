@@ -4,7 +4,7 @@ A pipeline for predicting CRISPR-Cas9 cleavage efficiency using feature engineer
 
 ## Requirements
   
-The software requirements for BoostMEC are listed below. To simplify the management of software packages, we also provide a [Docker image](#docker-image) with the required packages and code.
+The software requirements for BoostMEC are listed below. To simplify the management of software packages, we also provide a [Docker image](#using-the-docker-image) with the required packages and code.
 
 R 4.1.0  
 Python 3.7.1  
