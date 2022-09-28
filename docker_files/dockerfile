@@ -42,6 +42,6 @@ RUN pip3.7 install -r requirements.txt >/dev/null 2>&1
 RUN Rscript requirements.r
 
 #Add BoostMEC scripts and example data (does not contain full repo)
-ADD BoostMEC .
+ADD BoostMEC /BoostMEC
 
 CMD ["bash"]
