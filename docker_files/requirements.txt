@@ -1,0 +1,11 @@
+###### Requirements with Version Specifiers ######
+wheel
+cmake == 3.24.1
+biopython == 1.74
+numpy == 1.17.3
+pandas == 0.25.3
+pydot == 1.4.1
+graphviz == 0.20.1
+lightgbm == 2.3.1
+matplotlib == 3.2.2
+
