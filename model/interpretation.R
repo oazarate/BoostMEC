@@ -7,7 +7,8 @@ suppressMessages(library(fs))
 option_list <- list(
   make_option(c("-p", "--path"), type = "character", default = NULL, help = "Location of BoostMEC model objects"),
   make_option(c("-d", "--datasetencoded"), type = "character", default = NULL, help="Encoded CSV file that has been created by the BoostMEC pipeline"),
-  make_option(c("-i", "--row"), type = "integer", default = 1, help="Dataset row to interpret, otherwise only the first row will be used")
+  make_option(c("-i", "--row"), type = "integer", default = 1, help="Dataset row to interpret, otherwise only the first row will be used"),
+  make_option(c("-f", "--features"), type = "character", default = TRUE, help="Boolean defaulting to TRUE. A value of TRUE will add the feature values to the interpretation plot. The non-encoded feature CSV produced by the BoostMEC pipleline must be in the same location as the encoded CSV. Rows must match those of the encoded CSV file.")
 )
 
 opt_parser <- OptionParser(option_list = option_list)
@@ -44,6 +45,25 @@ ps2_new <- paste0("di ", c(as.character(c((-4):(-1), 1:23)), paste0("+", as.char
 ps_new <- c(ps1_new, ps2_new)
 
 ps_name_change <- tibble(original_name = ps_original, new_name = ps_new)
+
+if(opt$features == TRUE){
+  suppressMessages(dat_features <- read_csv(paste0(dir, "/", file_name, "-with-features.csv")) %>%
+                     select(grna_energy:TTT) %>%
+                     mutate_if(is.numeric, round, digits = 2) %>%
+                     as.data.frame())
+  dat_row <-dat_features[opt$row,] %>% t()
+  
+  features <- data.frame(features = rownames(dat_row), values = dat_row[,1])
+  features <- features %>%
+    left_join(ps_name_change, by = c("features" = "original_name")) %>%
+    mutate(new_name = ifelse(is.na(new_name), features, new_name)) %>%
+    mutate(new_name = paste(new_name, values, sep = "=")) %>%
+    rename(original_name = features) %>%
+    select(original_name, new_name)
+  
+  ps_name_change <- features
+  
+}
 
 interpretation_dataset[[1]] <- interpretation_dataset[[1]] %>%
   left_join(ps_name_change, by = c("Feature" = "original_name")) %>%
