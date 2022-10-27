@@ -10,7 +10,7 @@ R 4.1.0
 Python 3.7.1  
 [ViennaRNA](https://www.tbi.univie.ac.at/RNA/) 2.4.14
 
-The Python and R package requirements are available [here](docker_files/requirements.txt) and [here](docker_files/requirements.R), respectively.
+The Python and R package requirements are available [here](docker_files/requirements.txt) and [here](docker_files/requirements.r), respectively.
 
 ## Instructions for use
 
