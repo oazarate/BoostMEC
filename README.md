@@ -16,16 +16,6 @@ The Python and R package requirements are available [here](docker_files/requirem
 
 BoostMEC requires that the files under the [model](model) directory always reside in a shared location.
 
-If you use BoostMEC in your work, please cite our publication:
-
-Zarate, O.A., Yang, Y., Wang, X. et al. BoostMEC: predicting CRISPR-Cas9 cleavage efficiency through boosting models. BMC Bioinformatics 23, 446 (2022). https://doi.org/10.1186/s12859-022-04998-z
-
-In addition, please cite the following publications, which created the datasets we used for training:
-
-Kim HK, Kim Y, Lee S, Min S, Bae JY, Choi JW, et al. SpCas9 activity prediction by DeepSpCas9, a deep learning-based model with high generalization performance. Sci Adv. 2019;5(11):9249.
-
-Xiang X, Corsi GI, Anthon C, Qu K, Pan X, Liang X, et al. Enhancing CRISPR-Cas9 gRNA efficiency prediction by data integration and deep learning. Nat Commun. 2021;12(1):3238.
-
 ### Data format
 To use BoostMEC, sgRNA target regions 30 nt in length are required, consisting of the 4 nt context in the 5' end + 20 nt sgRNA + 3 nt PAM + 3 nt context in the 3' end. Data should be formatted as a CSV file with 2 required columns: dataset and x30mer, which specify the sgRNA source dataset name and the target region 30-mer, respectively. We provide a small example dataset comprised of sequences from [Doench et al. 2014](https://www.nature.com/articles/nbt.3026) and [Moreno-Mateos et al. 2015](https://www.nature.com/articles/nmeth.3543) (data sourced from [this repo](https://github.com/maximilianh/crisporPaper)) in [data/example-test-sequences.csv](data/example-test-sequences.csv)
 
@@ -98,3 +88,15 @@ The dockerfile and package requirements are also available in this repository un
 ## Model training data
   
 BoostMEC was trained on high-throughput CRISPR efficiency data from from [Kim et al. 2019](https://www.science.org/doi/10.1126/sciadv.aax9249) and [Xiang et al. 2021](https://www.nature.com/articles/s41467-021-23576-0).
+
+## Citations
+
+If you use BoostMEC in your work, please cite our publication:
+
+Zarate, O.A., Yang, Y., Wang, X. et al. BoostMEC: predicting CRISPR-Cas9 cleavage efficiency through boosting models. BMC Bioinformatics 23, 446 (2022). https://doi.org/10.1186/s12859-022-04998-z
+
+In addition, please cite the following publications, which created the datasets we used for training:
+
+Kim HK, Kim Y, Lee S, Min S, Bae JY, Choi JW, et al. SpCas9 activity prediction by DeepSpCas9, a deep learning-based model with high generalization performance. Sci Adv. 2019;5(11):9249.
+
+Xiang X, Corsi GI, Anthon C, Qu K, Pan X, Liang X, et al. Enhancing CRISPR-Cas9 gRNA efficiency prediction by data integration and deep learning. Nat Commun. 2021;12(1):3238.
